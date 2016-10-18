@@ -1,52 +1,34 @@
-var resultsTemplate = '<h2></h2>';
-
+//Global variables
 var bmrResult = 0;
 
 var recipeIndex = 1;
 
+
+//To Calculate Daily Calorie Intake
 function bmrCalculatorForMale(){
   var age = parseInt($('#Age').val());
   var height = parseInt($('#Height').val());
   var weight = parseInt($('#Weight').val());
-  bmrResult = 66 + 13.7 * weight + 5 * height - 6.8 * age;
+  bmrResult = (66 + 13.7 * weight + 5 * height - 6.8 * age) * 1.5;
 }
 
 function bmrCalculatorForFemale(){
   var age = parseInt($('#Age').val());
   var height = parseInt($('#Height').val());
   var weight = parseInt($('#Weight').val());
-  bmrResult = 655 + 9.6 * weight + 1.8 * height - 4.7 * age;
+  bmrResult = (655 + 9.6 * weight + 1.8 * height - 4.7 * age) *1.5;
 }
 
-
-function renderBmrResult(resultstemplate){
-  var renderedBmrResult = $(resultsTemplate).text('Your BMR is ' + bmrResult +'!');
-  $('.bmrCalculatorResults').html(renderedBmrResult);
-}
-
-function render(){
+function getGender(){
   if($('.Gender').val() === 'Male') {
     bmrCalculatorForMale();
   }
   else{
     bmrCalculatorForFemale(bmrResult);
   }
-  renderBmrResult(resultsTemplate, bmrResult);
 }
 
-$(document).ready(function(){
-  $('.bmrCalculatorForm').submit(function(){
-    event.preventDefault();
-    render();
-    renderRecipe(bmrResult);
-    removeHidden();
-    scroll();
-  })
-})
-
-
-
-// Requesting from API
+// Requesting from API + Callback
 
 var spoonacularUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate';
 
@@ -69,34 +51,34 @@ function getDataFromApi(caloriesPerDay, callback) {
 }
 
 
-
 function displayData(data) {
-  var resultElement = '<div class ="js-resultInfo resultInfo" id="'+ String(recipeIndex) +'">' +
-                        '<div class = "nutritionInfo">' +
-                          '<h3>Total amount of calories: '+ data.nutrients.calories +' g</h3>'+
-                          '<h3>Total amount of protein: '+ data.nutrients.protein +' g</h3>'+
-                          '<h3>Total amount of fat: '+ data.nutrients.fat +' g</h3>'+
-                          '<h3>Total amount of carbohydrates: '+ data.nutrients.carbohydrates +' g</h3><br>'+
-                          '<h3>These are the meals (click on image to get full information about the meal)</h3><br><br><br>'+
-                        '</div>'                    
+  var resultElement = '<div class ="js-resultInfo resultInfo row" id="'+ String(recipeIndex) +'">' +
+                        '<div class ="col-12">'+
+                          '<div class = "nutritionInfo">' +
+                            '<h4>Total amount of calories: '+ data.nutrients.calories +' kcal</h4>'+
+                            '<h4>Total amount of protein: '+ data.nutrients.protein +' g</h4>'+
+                            '<h4>Total amount of fat: '+ data.nutrients.fat +' g</h4>'+
+                            '<h4>Total amount of carbohydrates: '+ data.nutrients.carbohydrates +' g</h4>'+
+                            '<h4>These are the meals (click on image to get full information about the meal)</h4><br>'+
+                          '</div>'                    
   if (data.meals) {
     data.meals.forEach(function(item, index) {
       if(index === 0){  
-        resultElement += '<div class ="recipes">' +
+        resultElement += '<div class ="recipes col-4">' +
                            '<h3> Meal for Breakfast </h3>' +
                            '<p>' + item.title + '</p>' + 
                            '<a href=" https://spoonacular.com/recipes/'+ item.title + '-' + item.id + '"><img src="https://webknox.com/recipeImages/'+ item.id +'-556x370.jpg"></a>' +
                           '</div>';             
       }
       else if(index === 1){  
-        resultElement += '<div class ="recipes">' +
+        resultElement += '<div class ="recipes col-4">' +
                            '<h3> Meal for Lunch </h3>' +
                            '<p>' + item.title + '</p>' + 
                            '<a href=" https://spoonacular.com/recipes/'+ item.title + '-' + item.id + '"><img src="https://webknox.com/recipeImages/'+ item.id +'-556x370.jpg"></a>' +
                          '</div>';
       }
       else{  
-        resultElement += '<div class ="recipes">' +
+        resultElement += '<div class ="recipes col-4">' +
                            '<h3> Meal for Dinner </h3>' +
                            '<p>' + item.title + '</p>' + 
                            '<a href=" https://spoonacular.com/recipes/'+ item.title + '-' + item.id + '"><img src="https://webknox.com/recipeImages/'+ item.id +'-556x370.jpg"></a>' +
@@ -108,8 +90,12 @@ function displayData(data) {
   else {
     resultElement += '<p>No results</p>';
   }
-  resultElement +=    '<input type="button" class="js-generateMoreButton generateMoreButton" value="Not Satisfied with these recipes? Fret not. Generate more recipes by clicking me!">' +
-                   '</div>' 
+  resultElement +=    '<div class ="generateMore">'+
+                       '<p>Not Satisfied with these recipes?Fret not. Generate more recipes by clicking the button below!</p>' +
+                       '<input type="button" class="js-generateMoreButton generateMoreButton" value="Give me more!">' +
+                      '</div>' +
+                   '</div>' + 
+                  '</div>'; 
   $('.js-recipeContainer').append(resultElement);
   generateMoreRecipe();
   scrollToNewElement();
@@ -120,28 +106,17 @@ function renderRecipe(bmrResult) {
     getDataFromApi(bmrResult, displayData);
   }
 
+//function to generate more recipe 
 
 function generateMoreRecipe() {
     $('.js-generateMoreButton').click(function(){
-        $(this).addClass('hidden');
+        $(this).closest("div").addClass('hidden');
         recipeIndex += 1;
         renderRecipe(bmrResult);
-        
     })
 }
 
-
 //aesthetics
-function scroll(){
-    $('html, body').animate({
-        scrollTop: $("#recipeContainer").offset().top
-    }, 2000);
-}
-
-function removeHidden(){
-    $('.js-recipeContainer').removeClass('hidden')
-}
-
 function scrollToNewElement(){
     var index = "#" + String(recipeIndex);
     $('html, body').animate({
@@ -149,3 +124,11 @@ function scrollToNewElement(){
     }, 2000);
 }
 
+//Run functions
+$(document).ready(function(){
+  $('.bmrCalculatorForm').submit(function(){
+    event.preventDefault();
+    getGender();
+    renderRecipe(bmrResult);
+  })
+})

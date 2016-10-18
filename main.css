@@ -2,12 +2,12 @@
   	border:0;
   	margin:0;
   	padding:0;
+  	box-sizing: border-box;
 }
 
 
-
 .bmrCalculatorContainer{
-	height: 100vh;
+	height: 654px;
 	width: 100%;
 	background-image:     
 		linear-gradient(
@@ -19,28 +19,26 @@
 	background-size: cover;
 }
 
-.bmrCalculatorContainer h1{
+
+#title{
+	position: relative;
+	text-align: center;
+	top: 20px;
+	color: white;
 	margin: 0;
 	padding: 0;
 }
 
-#title{
-	position: relative;
-	top: 15vh;
-	color: white;
-}
-
-
 .bmrCalculatorFormContainer{
 	position: relative;
-	top: 25vh;
-	width: 35vw;
-	height: 50vh;
+	top: 80px;
+	width: 50%;
+	height: 400px;
 	background-color: lightblue;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	border: 3px solid grey;
-	border-radius: 5%;
 }
 
 .Gender{
@@ -49,13 +47,17 @@
 	margin-right: auto;
 }
 
-.bmrCalculatorForm label, input, h1{
+.bmrCalculatorForm label, input, h3{
 	display: block;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 2vh;
-	margin-bottom: 2vh;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.bmrCalculatorForm input[type="text"]{
+	width: 50%;
 }
 
 .bmrCalculatorForm button{
@@ -65,80 +67,16 @@
 	margin-top: 20px;
 }
 
-
-.recipeContainer{
-	width: 100%;
-	background-color: white;
-	min-height: 100vh;
-}
-
-
-.recipeContainer h3, p {
-	font-family:'Great Vibes', Helvetica, sans-serif;
-}
-
-.recipeContainer h3 {
-	font-size: 25px;
-}
-
-.recipeContainer p{
-	font-size: 20px;
-}
-
-
-.recipeContainer img{
-	display: block;
-	height: 200px;
-	width: 200px;
-}
-
-
-.recipes{
-	position: relative;
-	display: inline-block;
-	height: 300px;
-	width: 300px;	
-	float: left;
-	margin-left: 2vw;
-}
-
-
-.recipes p{
-	word-wrap: break-word;
-}
-
-.recipes img{
-	position: absolute;
-	bottom: 20px;
-}
-
-
 .resultInfo{
 	min-height: 95vh;
 	width: 95vw;
 	padding: 1vh;
 	margin: 2.5vh auto 2.5vh auto;
-	background-image: url("images/lalala7.jpg");
-	background-size: cover;
+	background-color: #e6e6e6;
 }
 
-.generateMoreButton {
-	position: relative;
-	top: 4vh;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-    margin: 0 2vw 2vh 2vw;
-    cursor: pointer;
-}
-
-.hidden{
-	display: none;
+.resultInfo h4, .resultInfo p, .resultInfo h3 {
+	font-family:'Great Vibes', Helvetica, sans-serif;
 }
 
 .nutritionInfo{
@@ -148,3 +86,48 @@
 	display: block;
 	width: 50vw;
 }
+
+.recipes{
+	position: relative;
+	display: inline-block;
+	height: 300px;	
+	float: left;
+}
+
+.recipes p{
+	word-wrap: break-word;
+	text-align: center;
+}
+
+.recipes img{
+	display: block;
+	margin: auto;
+	height: 200px;
+	width: 200px;
+}
+
+.generateMore{
+	width:33%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.generateMoreButton {
+	position: relative;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    margin: 0 auto 0 auto;
+    cursor: pointer;
+}
+
+.hidden{
+	display: none;
+}
+
+
