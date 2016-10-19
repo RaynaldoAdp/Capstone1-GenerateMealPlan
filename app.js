@@ -95,6 +95,7 @@ function displayData(data) {
                        '<input type="button" class="js-generateMoreButton generateMoreButton" value="Give me more!">' +
                       '</div>' +
                    '</div>' + 
+                   '<footer> <a href="https://github.com/RaynaldoAdp"><img src="images/github.png"></a> </footer>'+
                   '</div>'; 
   $('.js-recipeContainer').append(resultElement);
   generateMoreRecipe();
