@@ -1,52 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>
-		Determine your daily caloric requirement and find recipes to cater for it!
-	</title>
-	<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="float-grid.css">
-	<link rel="stylesheet" type="text/css" href="main.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-</head>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			Determine your daily caloric requirement and find recipes to cater for it!
+		</title>
+		<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="float-grid.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</head>
 
-<body>
-
-	<div class="bmrCalculatorContainer row">
-		<div class ="col-12">
-			<h3 id='title'>Make Everyday Meals Fun!<br>Fill in your details and get daily meal plans to match your calorie needs</h3>
-			<div class="bmrCalculatorFormContainer">
-
-				<form class="bmrCalculatorForm" >
+	<body>
+		<div class="bmrCalculatorContainer row">
+			<div class ="col-12">
+				<h3 id='title'>Make Everyday Meals Fun!<br>Fill in your details and get daily meal plans to match your calorie needs</h3>
+				<div class="bmrCalculatorFormContainer">
+					<form class="bmrCalculatorForm" >
 	     			<h3>Fill in and get daily meal plans!</h3>
-
 	     			<label for="Gender"> Gender </label>
-	 				<select class="Gender" name="Gender">
-						<option value="Male"> Male </option>
-						<option value="Female"> Female </option>
-					</select>	
-
-	      			<label for="Age"> Age </label>
-	      			<input type="text" name='Age' id='Age' required />
-
-	      			<label for="Height"> Height in cm </label>
-	      			<input type="text" name='Height' id='Height' required />
-
-	      			<label for="Weight"> Weight in Kg </label>
-	      			<input type="text" name='Weight' id='Weight' required />
-
-					<button type='submit'> Generate Recipes! </button>
-				</form>
-			</div>		
+		 				<select class="Gender" name="Gender">
+							<option value="Male"> Male </option>
+							<option value="Female"> Female </option>
+						</select>
+      			<label for="Age"> Age </label>
+      			<input type="text" name='Age' id='Age' required />
+      			<label for="Height"> Height in cm </label>
+      			<input type="text" name='Height' id='Height' required />
+      			<label for="Weight"> Weight in Kg </label>
+      			<input type="text" name='Weight' id='Weight' required />
+						<button type='submit'> Generate Recipes! </button>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
-
 		<div class ="js-recipeContainer recipeContainer" id="recipeContainer">
-
-	    </div>   
-
-</body>
-
+	  </div>
+	</body>
 </html>
