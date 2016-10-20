@@ -62,7 +62,7 @@ function displayData(data) {
     var mealType;
     data.meals.forEach(function(item, index) {
       mealType = index === 0 ? "Breakfast" : (index === 1 ? "Lunch" : "Dinner");
-      resultElement = '<div class ="recipes col-4">'
+      resultElement += '<div class ="recipes col-4">'
       + '<h3> Meal for ' +  mealType + '</h3>'
       + '<p>' + item.title + '</p>'
       + '<a href=" https://spoonacular.com/recipes/'+ item.title + '-' + item.id + '"><img src="https://webknox.com/recipeImages/'+ item.id +'-556x370.jpg"></a>'
@@ -77,8 +77,8 @@ function displayData(data) {
                       '<input type="button" class="js-generateMoreButton generateMoreButton" value="Give me more!">' +
                       '</div>' +
                    '</div>' +
-                   '<footer> <a href="https://github.com/RaynaldoAdp"><img src="images/github.png"></a> </footer>'+
-                  '</div>';
+                  '</div>'+
+                  '<footer> <a href="https://github.com/RaynaldoAdp"><img src="images/github.png"></a> </footer>';
   $('.js-recipeContainer').append(resultElement);
   generateMoreRecipe();
   scrollToNewElement();
@@ -94,6 +94,7 @@ function renderRecipe() {
 function generateMoreRecipe() {
     $('.js-generateMoreButton').click(function(){
         $(this).closest("div").addClass('hidden');
+        $('.js-recipeContainer').find("footer").addClass('hidden');
         recipeIndex += 1;
         renderRecipe();
     })
