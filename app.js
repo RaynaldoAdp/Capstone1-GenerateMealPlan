@@ -78,7 +78,7 @@ function displayData(data) {
                       '</div>' +
                    '</div>' +
                   '</div>'+
-                  '<footer> <a href="https://github.com/RaynaldoAdp"><img src="images/github.png"></a> </footer>';
+                  '<footer class="js-footer"> <a href="https://github.com/RaynaldoAdp"><img src="images/github.png"></a> </footer>';
   $('.js-recipeContainer').append(resultElement);
   generateMoreRecipe();
   scrollToNewElement();
@@ -94,7 +94,7 @@ function renderRecipe() {
 function generateMoreRecipe() {
     $('.js-generateMoreButton').click(function(){
         $(this).closest("div").addClass('hidden');
-        $('.js-recipeContainer').find("footer").addClass('hidden');
+        $(".js-footer").addClass('hidden');
         recipeIndex += 1;
         renderRecipe();
     })
@@ -112,6 +112,7 @@ function scrollToNewElement(){
 $(document).ready(function(){
   $('.bmrCalculatorForm').submit(function(){
     event.preventDefault();
+    $(".js-footer").addClass('hidden');
     getGender();
     renderRecipe();
   })
