@@ -2,10 +2,19 @@
 var bmrResult = 0;
 var recipeIndex = 1;
 
+/**
+function to register the input by user and return it to NUM array
+*/
 function getEnteredFormData() {
   return [parseInt($('#Age').val()), parseInt($('#Height').val()), parseInt($('#Weight').val())];
 }
 
+/**
+function to calculate the daily caloric need of the user
+argument passed in is boolean(male === true/false)
+if male use formula for male
+if not male(female) use formuia for female
+*/
 function bmrCalculator(male){
   var formData = getEnteredFormData();
   var age = formData[0];
@@ -18,6 +27,8 @@ function bmrCalculator(male){
   }
 }
 
+
+//function to register the gender of user and run bmrCalculator accordingly
 function getGender(){
   if($('.Gender').val() === 'Male') {
     bmrCalculator(true);
@@ -47,7 +58,10 @@ function getDataFromApi(callback) {
   $.ajax(settings);
 }
 
-
+/**
+callback function for API request
+render the page if the request is a success
+*/
 function displayData(data) {
   var resultElement = '<div class ="js-resultInfo resultInfo row" id="'+ String(recipeIndex) +'">' +
                         '<div class ="col-12">'+
@@ -84,13 +98,14 @@ function displayData(data) {
   scrollToNewElement();
 }
 
-
 function renderRecipe() {
     getDataFromApi(displayData);
   }
 
-//function to generate more recipe
-
+/**
+function to generate more recipe by making a new request when button is clicked
+Hides the button and footer afterwards as new button and footer will be rendered in the newest page
+*/
 function generateMoreRecipe() {
     $('.js-generateMoreButton').click(function(){
         $(this).closest("div").addClass('hidden');
@@ -100,7 +115,7 @@ function generateMoreRecipe() {
     })
 }
 
-//aesthetics
+//function to scroll to the new page that is rendered
 function scrollToNewElement(){
     var index = "#" + String(recipeIndex);
     $('html, body').animate({
