@@ -125,7 +125,7 @@ function scrollToNewElement(){
 
 //Run functions
 $(document).ready(function(){
-  $('.bmrCalculatorForm').submit(function(){
+  $('.bmrCalculatorForm').submit(function(event){
     event.preventDefault();
     $(".js-footer").addClass('hidden');
     getGender();
