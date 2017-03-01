@@ -8,7 +8,7 @@
 
 .bmrCalculatorContainer{
 	height: 96vh;
-	width: 100%;
+	width: 100vw;
 	display: flex;
 	background-image:     
 		linear-gradient(
@@ -24,7 +24,7 @@
 #title{
 	position: relative;
 	text-align: center;
-	top: 20px;
+	top: 3vh;
 	color: white;
 	margin: 0;
 	padding: 0;
@@ -32,9 +32,9 @@
 
 .bmrCalculatorFormContainer{
 	position: relative;
-	top: 80px;
-	width: 50%;
-	height: 400px;
+	top: 12vh;
+	width: 50vw;
+	height: 60vh;
 	background-color: lightblue;
 	display: block;
 	margin-left: auto;
@@ -53,8 +53,8 @@
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 1.5vh;
+	margin-bottom: 1.5vh;
 }
 
 .bmrCalculatorForm input[type="text"]{
@@ -65,7 +65,7 @@
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
+	margin-top: 3vh;
 }
 
 .resultInfo{
@@ -110,7 +110,7 @@
 }
 
 .generateMore{
-	width:33%;
+	width: 33vw;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -120,7 +120,7 @@
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 10px 10px;
+    padding: 1vh 1vh;
     text-align: center;
     text-decoration: none;
     display: block;
@@ -142,18 +142,18 @@ footer img{
 
 
 @media only screen and (min-width: 640px) {
-  .bmrCalculatorForm input[type="text"]{
+  	.bmrCalculatorForm input[type="text"]{
   		width: 25%;
-  }
-  .resultInfo h4 {
+  	}
+  	.resultInfo h4 {
 		font-size: 25px;
-  }
-  .resultInfo h3 {
+  	}
+  	.resultInfo h3 {
 		font-size: 30px;
-  }
-  .resultInfo p  {
+  	}
+  	.resultInfo p  {
 		font-size: 17px;
-  }
+  	}
 
 }
 
