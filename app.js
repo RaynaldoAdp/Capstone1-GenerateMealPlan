@@ -1,8 +1,9 @@
 //Global variables
 var bmrResult = 0;
 var recipeIndex = 1;
+var newIndicator = false; //indicates whether a new search(with different parameters) are made from the top page.
 
-/**
+/*
 function to register the input by user and return it to NUM array
 */
 function getEnteredFormData() {
@@ -123,10 +124,20 @@ function scrollToNewElement(){
     }, 2000);
 }
 
+//function to check whether new results are requested(with new parameters)
+function checkNewParametersRequest(){
+  if(newIndicator){
+    $(".js-recipeContainer").empty();
+    newIndicator = false;
+  }
+}
+
 //Run functions
 $(document).ready(function(){
-  $('.bmrCalculatorForm').submit(function(event){
+  $(".bmrCalculatorForm").submit(function(event){
     event.preventDefault();
+    newIndicator = true;
+    checkNewParametersRequest();
     $(".js-footer").addClass('hidden');
     getGender();
     renderRecipe();
