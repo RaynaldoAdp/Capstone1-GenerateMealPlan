@@ -1,6 +1,7 @@
 //Global variables
 var bmrResult = 0;
 var recipeIndex = 1;
+var newIndicator = false;
 
 function getEnteredFormData() {
   return [parseInt($('#Age').val()), parseInt($('#Height').val()), parseInt($('#Weight').val())];
@@ -108,10 +109,19 @@ function scrollToNewElement(){
     }, 2000);
 }
 
+function checkNewParametersRequest(){
+  if(newIndicator){
+    $(".js-recipeContainer").empty();
+    newIndicator = false;
+  }
+}
+
 //Run functions
 $(document).ready(function(){
   $('.bmrCalculatorForm').submit(function(event){
     event.preventDefault();
+    newIndicator = true;
+    checkNewParametersRequest();
     $(".js-footer").addClass('hidden');
     getGender();
     renderRecipe();
